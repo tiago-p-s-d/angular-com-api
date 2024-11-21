@@ -1,0 +1,30 @@
+<form [formGroup]="deputadoForm" class="form-container">
+  <label for="nome" class="form-label">
+    Deputados
+  </label>
+  <input
+    class="form-control"
+    type="text"
+    name="nome"
+    id="nome"
+    formControlName="nome"
+    placeholder="Digite o nome do deputado"
+  >
+  <input
+    class="btn btn-info mt-3"
+    type="button"
+    value="Buscar"
+    [disabled]="deputadoForm.invalid"
+    (click)="buscarDeputado()"
+  >
+</form>
+
+<div *ngIf="deputados != undefined" class="card-container">
+  <div *ngFor="let deputado of deputados" class="deputado-card">
+    <img [src]="deputado.urlFoto" alt="Foto do deputado" class="deputado-img">
+    <div class="deputado-info">
+      <p class="deputado-nome">{{ deputado.nome }}</p>
+      <p class="deputado-email">{{ deputado.email }}</p>
+    </div>
+  </div>
+</div>
